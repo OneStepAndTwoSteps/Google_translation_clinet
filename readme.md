@@ -9,5 +9,5 @@
    4.tk的获取是靠js获取 如何获取 已经在代码中贴出
 
  ## 效果图：
- 	![Image text](https://raw.githubusercontent.com/OneStepAndTwoSteps/Google_translation_clinet/master/img/效果图.png)
+ ![Image text](https://raw.githubusercontent.com/OneStepAndTwoSteps/Google_translation_clinet/master/img/效果图.png)
    
