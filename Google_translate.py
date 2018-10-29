@@ -71,10 +71,18 @@ class translation():
             
             if content.isalpha():
                 response = requests.get(self.URL2.format(tk=tk, q=q), headers=self.HEADERS).json()
-                print("response", response)
+
+                # print("response", response)
                 word = response[0][0][0]
                 Chinese_character = response[0][0][1]
-                print("\n翻译结果：%s %s \n" % (Chinese_character,word))
+
+                word2=response[1][0][0]
+                Chinese_character2=response[1][0][1]
+
+                word3=response[1][1][0]
+                Chinese_character3=response[1][1][1]
+
+                print("\n翻译结果：%s %s \n \t\t  %s:%s\n \t\t  %s:%s\n" % (Chinese_character,word,word2,Chinese_character2,word3,Chinese_character3))
             else:
                 response = requests.get(self.URL.format(tk=tk, q=q), headers=self.HEADERS).json()
                 print("response",response)
