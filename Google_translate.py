@@ -62,27 +62,34 @@ class translation():
 
     def work(self):
         while True:
-            content=input("请输入你要翻译的内容：")
+           content=input("请输入你要翻译的内容：")
+            content2 =re.sub("[\s+\.\!re\/_,$%^*(+\"\':：]+|[+——！，。？、~@#￥%……&*（）]+","",content)
+            content2=content2.replace(' ','')
+            print(content2)
             if content == "q!":
                 break
             Js = Py4Js()
             tk = Js.getTk(content)
             q = content
-            
-            if content.isalpha():
+            if content2.isalpha():
                 response = requests.get(self.URL2.format(tk=tk, q=q), headers=self.HEADERS).json()
 
-                # print("response", response)
+                print("response", response)
                 word = response[0][0][0]
                 Chinese_character = response[0][0][1]
 
-                word2=response[1][0][0]
-                Chinese_character2=response[1][0][1]
+                try:
+                    word2 = response[1][0][0]
+                    Chinese_character2 = response[1][0][1]
+                    try:
+                        word3=response[1][1][0]
+                        Chinese_character3=response[1][1][1]
+                        print("\n翻译结果：%s %s \n \t\t  %s:%s\n \t\t  %s:%s\n" % (Chinese_character,word,word2,Chinese_character2,word3,Chinese_character3))
+                    except:
+                        print("\n翻译结果：%s %s \n \t\t  %s:%s\n" % (Chinese_character, word, word2, Chinese_character2))
+                except:
+                    print("\n翻译结果：%s %s \n " % (Chinese_character, word))
 
-                word3=response[1][1][0]
-                Chinese_character3=response[1][1][1]
-
-                print("\n翻译结果：%s %s \n \t\t  %s:%s\n \t\t  %s:%s\n" % (Chinese_character,word,word2,Chinese_character2,word3,Chinese_character3))
             else:
                 response = requests.get(self.URL.format(tk=tk, q=q), headers=self.HEADERS).json()
                 print("response",response)
