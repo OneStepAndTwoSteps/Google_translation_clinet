@@ -54,6 +54,10 @@ class translation():
             "single?client=t&sl=zh-CN&tl=en&hl=zh-CN&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie" \
             "=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&kc=1&" \
             "tk={tk}&q={q}"
+         self.URL2="https://translate.google.cn/translate_a/" \
+                  "single?client=t&sl=en&tl=zh-CN&hl=zh-CN&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie" \
+                  "=UTF-8&oe=UTF-8&source=bh&ssel=0&tsel=0&kc=1&" \
+                  "tk={tk}&q={q}"
         self.HEADERS={'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
 
     def work(self):
@@ -61,15 +65,24 @@ class translation():
             content=input("请输入你要翻译的内容：")
             if content == "q!":
                 break
+            Js = Py4Js()
+            tk = Js.getTk(content)
+            q = content
+            
+            if content.isalpha():
+                response = requests.get(self.URL2.format(tk=tk, q=q), headers=self.HEADERS).json()
+                print("response", response)
+                word = response[0][0][0]
+                Chinese_character = response[0][0][1]
+                print("\n翻译结果：%s %s \n" % (Chinese_character,word))
             else:
-                Js=Py4Js()
-                tk=Js.getTk(content)
-                q=content
-                response=requests.get(self.URL.format(tk=tk,q=q),headers=self.HEADERS).json()
+                response = requests.get(self.URL.format(tk=tk, q=q), headers=self.HEADERS).json()
+                print("response",response)
                 word=response[0][0][0]
                 Chinese_character=response[0][0][1]
+                # word2 = response[1][0][0]
+                # Chinese_character2 = response[1][0][1]
                 print("\n翻译结果：%s %s \n"%(word,Chinese_character))
-
 if __name__ == '__main__':
     try:
 
