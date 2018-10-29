@@ -1,4 +1,5 @@
-# 一个封装Google的小软件
+#  ![Image text](https://raw.githubusercontent.com/OneStepAndTwoSteps/Google_translation_clinet/master/icon.png)
+# 一个封装Google 翻译的小软件
 
 ## 制作方法：
    1.当我们想要翻译一个单词或者其他文字的时候 我们在翻译框中输入 可以看到url会发生变化 url直接发生变化 一般都是get请求提交
@@ -10,4 +11,6 @@
 
  ## 效果图：
  ![Image text](https://raw.githubusercontent.com/OneStepAndTwoSteps/Google_translation_clinet/master/img/效果图.png)
+
+ 
    
