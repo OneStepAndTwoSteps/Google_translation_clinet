@@ -13,6 +13,8 @@
 
  ## 效果图：
  ![Image text](https://raw.githubusercontent.com/OneStepAndTwoSteps/Google_translation_clinet/master/img/效果图.png)
+ 
+ ##  如果翻译没成功 可能是因为特殊符号的原因
 
  
    
